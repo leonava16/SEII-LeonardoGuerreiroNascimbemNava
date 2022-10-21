@@ -1,0 +1,59 @@
+a) Liste e descreva o que são as 4 etapas do processo de compilação.
+
+- Analise Léxica e Sintática:
+
+Na parte relativa à verificação da léxica, é a primeira etapa do processo de compilação. O principal objetivo é realizar a identificação de unidades léxicas ou lexemas que fazem parte do programa. Esa análise é feita de modo a ler todos os caracteres do programa fonte e verificar se eles pertencem ao alfabeto da linguagem. Em caso negativo, é gerado um erro léxico. Ainda, nessa fase o processamento de uma linguagem pode ser feito por gramáticas regulares podendo ser formalmente descrito por expressões regulares. As rotinas que processam essa linguagem modelam algoritmos construídos a partir de autômatos finitos.
+
+Na parte da verificação sintática, o objetivo é verificar a validar a gramática do programa e reconhecer se a estrutura gramatical do código fonte está acordada com as regras sintáticas da linguagem vigente. É feita uma varredura na sequência de tokens recebidos e é produzida uma estrutura de dados chamada de "árvore sintática", que representa a hierarquia do código fonte. Caso a configuração seja inválida, é gerado um erro sintático.
+
+- Analise Semântica:
+
+Nessa etapa o objetivo é verificar a consistência da semântica do programa fonte. Para isso, utiliza-se a a árvore sintática gerada anteriormente e as respectivas informações da tabela de símbolos. Essa tabela é muito importante porque é através dela que são recuperados os dados sobre os identificadores, que são usados na avaliação das regras semnânticas.
+
+- Geração de código intermediário:
+
+Nessa fase é gerado uma sequência de código chamada de "código intermediário", que na sequência dará origem no código objeto. Tal código intermediário não especifica detalhes da construção do código objeto final. A representação intermediaria deve ser facilmente produzida e facilmente traduzida para a máquina alvo. Uma forma de representação intermediaria muito conhecida e a forma de três endereços que consistem de três operandos por instrução. Uma das vantagens de gerar um código intermediário é a possibilidade de obter um código final mais eficiente através da otimização. A representação intermediária deve representar todas as operações do programa.
+
+- Geração de código objeto:
+
+Essa é a última etapa do processo de compilação, e recebe como entrada o código intermediário descrito anteriormente. Nessa etapa, é feita a seleção de registradores e a reserva de memória para as variáveis. Após concluída essa fase, para que o programa possa ser executado o código objeto é linkeditado com outros programas objetos ou recursos para posteriormente ser carreado na memória e executado pelo sistema operacional.
+
+_________________________________________________________
+
+b)O compilador gcc  permite  fornecer  parâmetros  extras,  que modificamdesde  a  emissão  de erros até o binário final, o otimizando para determinados comportamentos. Explique a função dos seguintes parâmetros:
+
+i) -static
+
+Esse parâmetro tem como objetivo restringir o acesso da função para dentro do próprio arquivo de código fonte dela. Dessa forma, a função fica privada a esse código e não pode ser chamada por outras partes da aplicação.
+
+ii) -g
+
+Esse parâmetro inclui no arquivo executável elementos utilizados pelos programas de depuração, como o gdb ou ddd
+
+
+iii) -pedantic
+
+Esse parâmetro exibe alertas.
+
+iv) -Wall
+
+O parâmetro -Wall funciona como uma forma de verificar problemas no código durante a compilação, exibindo todos os alertas ao ser executado.
+
+v) -Os
+
+Junto com -Wall acusa que variáveis podem não estar inicializadas.
+
+vi) -O3
+
+Os parâmetros -O1, -O2 e -O3 realizam otimizações para melhorar o desempenho da execução do código. Variam de 1 a 3, sendo portanto o -O3 o melhor processo de otimização.
+
+
+
+
+
+
+
+
+
+
+
