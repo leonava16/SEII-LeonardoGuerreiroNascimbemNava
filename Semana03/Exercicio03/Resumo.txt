@@ -1,0 +1,66 @@
+Processos
+
+Processo é uma instância rodando em um programa. Conforme o nível de complexidade dos programas e sistemas, pode ocorrer a ação de múltiplos processos simultâneos. Essa possbilidade ocorre em razão das características do programa e sistema.
+
+
+[Olhando para um processo]:
+
+- IDs de Processo:
+
+Cada processo em Linux é identificada por um único ID, composto por um número de 16 bits que são adereçados sequencialmente pelo Linux a cada novo processo criado. Cada processo tem um processo pai (exceto processos Zumbi). Você pode pensar em um processo de forma similar a um arranjo de árvore.
+
+- Vendo processos ativos:
+
+O comando ps mostra quais os processos rodando no sistema.
+
+- Matando um processo:
+
+Usando o comando kill e especificando o ID do processo, é possível matar o processo que estava rodando.
+
+
+[Criando processos]:
+
+- Usando system:
+
+A função system na biblioteca padrão C proporciona uma forma fácil de executar o comando de um programa.
+
+- Usando fork e exec:
+
+Essas funções usam o nome do programa como argumento para rodar um novo processo no programa.
+
+- Agendamento de processos:
+
+O Linux agenda os processos pai e filho independentemente; não há garantia de qual será executado primeiro, ou por quanto tempo ele será executado antes que o Linux o interrompa e deixe o outro processo (ou algum outro processo no sistema) é executado.
+
+[Sinais]:
+
+Um sinal é uma mensagem especial enviada a um processo. Os sinais são assíncronos; quando um processo recebe um sinal, ele processa o sinal imediatamente, sem terminar a função atual ou mesmo a linha de código atual. Existem várias dezenas de sinais diferentes, cada um com um significado diferente. Cada tipo de sinal é especificado por seu número de sinal, mas em programas, você geralmente se refere a um sinal pelo nome.
+
+[Terminação de Processos]:
+
+Normalmente, um processo termina de duas maneiras. Ou o programa em execução chama a função exit, ou a função main do programa retorna. Cada processo tem uma saída código: um número que o processo retorna ao seu pai. O código de saída.
+
+- Esperando a terminação de um processo:
+
+Em algumas situações é desejável que o processo pai espere até que um ou mais dos processos filhos sejam completados. Para isso, é possível usar a família de funções wait.
+
+- O sistema wait:
+
+A função wait serve para bloquear a chamada do processo até que um dos processos filho encerre, ou algum erro ocorra.
+
+- Processos Zumbi:
+
+Se um processo filho terminar enquanto o processo pai chamou a função wait, o processo filho desaparece e seu status de encerramento é transmitido para seus parentes através da chamada wait. No entento, caso o processo filho terminar sem que o processo pai tenha chamado a função wait, ele se torna um processo zumbi.
+
+- Limpando processos filho de forma assíncrona:
+
+Caso haja a necessidade de limpar os processos filho que forem completados para que não haja processos zumbi, é possível realizar isso através das chamadas wait3 ou wait4.
+
+
+
+
+
+
+
+
+
